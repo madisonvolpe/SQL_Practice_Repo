@@ -1,0 +1,7 @@
+SELECT f.facid, date_part('month',starttime), sum(slots) AS "Total Slots"
+FROM cd.facilities AS f
+	JOIN cd.bookings AS b
+	ON f.facid = b.facid 
+WHERE date_part('year', starttime)=2012
+GROUP BY f.facid, date_part('month',starttime)
+ORDER BY f.facid, date_part('month',starttime)
